@@ -23,6 +23,7 @@ export interface ModalProps {
     next: () => void;
     prev: () => void;
     preventOutsideInteraction?: boolean;
+    bottomComponent: React.ComponentType<TooltipProps>;
 }
 interface Layout {
     x?: number;
@@ -57,6 +58,7 @@ export declare class Modal extends React.Component<ModalProps, State> {
         labels: {};
         isHorizontal: boolean;
         preventOutsideInteraction: boolean;
+        bottomComponent: any;
     };
     layout?: Layout;
     state: {
@@ -81,6 +83,7 @@ export declare class Modal extends React.Component<ModalProps, State> {
     renderMask: () => JSX.Element;
     renderTooltip(): JSX.Element | null;
     renderNonInteractionPlaceholder(): JSX.Element | null;
+    renderCustomBottom: () => JSX.Element | null;
     render(): JSX.Element | null;
 }
 export {};

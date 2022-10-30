@@ -4,6 +4,7 @@ import { Labels } from '../types';
 import { TooltipProps } from './Tooltip';
 export interface TourGuideProviderProps {
     tooltipComponent?: React.ComponentType<TooltipProps>;
+    bottomComponent?: React.ComponentType<TooltipProps>;
     tooltipStyle?: StyleProp<ViewStyle>;
     labels?: Labels;
     androidStatusBarVisible?: boolean;
@@ -18,4 +19,4 @@ export interface TourGuideProviderProps {
     dismissOnPress?: boolean;
     preventOutsideInteraction?: boolean;
 }
-export declare const TourGuideProvider: ({ children, wrapperStyle, labels, tooltipComponent, tooltipStyle, androidStatusBarVisible, backdropColor, animationDuration, maskOffset, borderRadius, verticalOffset, startAtMount, dismissOnPress, preventOutsideInteraction, }: TourGuideProviderProps) => JSX.Element;
+export declare const TourGuideProvider: ({ children, wrapperStyle, labels, tooltipComponent, tooltipStyle, androidStatusBarVisible, backdropColor, animationDuration, maskOffset, borderRadius, verticalOffset, startAtMount, dismissOnPress, preventOutsideInteraction, bottomComponent }: TourGuideProviderProps) => JSX.Element;

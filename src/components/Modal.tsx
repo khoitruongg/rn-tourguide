@@ -37,7 +37,8 @@ export interface ModalProps {
   stop: () => void
   next: () => void
   prev: () => void
-  preventOutsideInteraction?: boolean
+  preventOutsideInteraction?: boolean,
+  bottomComponent: React.ComponentType<TooltipProps>
 }
 
 interface Layout {
@@ -76,6 +77,7 @@ export class Modal extends React.Component<ModalProps, State> {
     labels: {},
     isHorizontal: false,
     preventOutsideInteraction: false,
+    bottomComponent: Tooltip as any
   }
 
   layout?: Layout = {
@@ -317,6 +319,24 @@ export class Modal extends React.Component<ModalProps, State> {
       style={[StyleSheet.absoluteFill, styles.nonInteractionPlaceholder]} /> : null
   }
 
+  renderCustomBottom = () => {
+    const { bottomComponent: BottomComponent, visible, isFirstStep, isLastStep, currentStep } = this.props;
+    if (!visible) {
+        return null
+    }
+
+    return (
+        <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 99999 }}>
+            <BottomComponent
+                isFirstStep={isFirstStep}
+                isLastStep={isLastStep}
+                currentStep={currentStep!}
+                handleNext={this.handleNext}
+                handlePrev={this.handlePrev}
+                handleStop={this.handleStop} />
+        </View>
+    )
+}
 
   render() {
     const containerVisible = this.state.containerVisible || this.props.visible
@@ -341,6 +361,7 @@ export class Modal extends React.Component<ModalProps, State> {
               {this.renderMask()}
               {this.renderNonInteractionPlaceholder()}
               {this.renderTooltip()}
+              {this.renderCustomBottom()}
             </>
           )}
         </View>

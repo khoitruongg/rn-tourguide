@@ -18,6 +18,7 @@ const MAX_START_TRIES = 120
 
 export interface TourGuideProviderProps {
   tooltipComponent?: React.ComponentType<TooltipProps>
+  bottomComponent?: React.ComponentType<TooltipProps>
   tooltipStyle?: StyleProp<ViewStyle>
   labels?: Labels
   androidStatusBarVisible?: boolean
@@ -48,6 +49,7 @@ export const TourGuideProvider = ({
   startAtMount = false,
   dismissOnPress = false,
   preventOutsideInteraction = false,
+  bottomComponent
 }: TourGuideProviderProps) => {
   const [tourKey, setTourKey] = useState<string | '_default'>('_default')
   const [visible, updateVisible] = useState<Ctx<boolean | undefined>>({
@@ -269,6 +271,7 @@ export const TourGuideProvider = ({
             borderRadius,
             dismissOnPress,
             preventOutsideInteraction,
+            bottomComponent
           }}
         />
       </TourGuideContext.Provider>
