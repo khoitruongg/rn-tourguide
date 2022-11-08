@@ -319,14 +319,14 @@ export class Modal extends React.Component<ModalProps, State> {
       style={[StyleSheet.absoluteFill, styles.nonInteractionPlaceholder]} /> : null
   }
 
-  renderCustomBottom = () => {
+  renderCustomBottom(){
     const { bottomComponent: BottomComponent, visible, isFirstStep, isLastStep, currentStep } = this.props;
     if (!visible) {
         return null
     }
 
     return (
-        <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 99999 }}>
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 99999 }}>
             <BottomComponent
                 isFirstStep={isFirstStep}
                 isLastStep={isLastStep}

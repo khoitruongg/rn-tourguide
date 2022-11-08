@@ -83,7 +83,7 @@ export declare class Modal extends React.Component<ModalProps, State> {
     renderMask: () => JSX.Element;
     renderTooltip(): JSX.Element | null;
     renderNonInteractionPlaceholder(): JSX.Element | null;
-    renderCustomBottom: () => JSX.Element | null;
+    renderCustomBottom(): JSX.Element | null;
     render(): JSX.Element | null;
 }
 export {};
